@@ -1,0 +1,38 @@
+*{
+  margin: 0%;
+  border: 0;
+  box-sizing: border-box;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root{
+  --main-bg-color: #ebebeb;
+  --main-bg-color-hover:#d4d4d4;
+  --main-text-color: #59a6ee;
+  --secondary-text-color: rgb(65, 60, 60);
+}
+
+body{
+  background-color: var(--main-bg-color-hover);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--main-bg-color-hover)
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-text-color);
+}
+
+
+
+
+h1,h2,p,label,div, button, a{
+  color:var(--secondary-text-color);
+}
+

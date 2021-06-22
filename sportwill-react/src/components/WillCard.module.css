@@ -1,0 +1,54 @@
+#willCard{
+    background-color: var(--main-bg-color);
+    display: flex;
+    margin:1em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 35vw;
+    border-radius: 5px;
+    justify-content:space-around;
+    user-select: none;
+    min-width: 20em;
+  }
+  
+#willCard:hover {
+    box-shadow: 0 8px 16px 0 rgba(89, 166, 238,0.5);
+    transform: translateY(-5px);
+  }
+#willCard p{
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+#nameContainer{
+    text-align: center;
+  }
+  
+#image{
+    width:10em;
+    height: 10em;
+  
+  
+  }
+  
+.text{
+    margin:auto;
+    margin-bottom: 0.5em;
+    width:100%;
+    display:block;
+    padding:0.5em;
+    text-align: center;
+    justify-content:center;
+    color:var(--main-text-color);
+    float: right;
+  }
+#title{
+    font-weight: bold;
+  }
+#creator{
+    font-weight: bold;
+    color: var(--main-text-color);
+  
+  }
+  

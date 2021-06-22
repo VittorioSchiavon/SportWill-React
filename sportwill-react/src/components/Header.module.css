@@ -1,0 +1,37 @@
+.topnav{
+    background-color: var(--main-bg-color);
+    overflow: hidden;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
+    user-select: none;
+  }
+  
+  
+  .topnav .container{
+    float: right;
+    display: block;
+    margin-left: 15px;
+  }
+  
+  .link{
+    float: left;
+    display: block;
+    color: var(--main-text-color);
+    text-align: center;
+    padding: 2em 2em;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight:bold;
+  }
+  
+  .link:hover{
+    background-color: var(--main-bg-color-hover);
+  }
+  
+  .logo{
+    display: block;
+    height: 3em;
+    float: left;
+    margin: 1em;
+  
+  }
+  

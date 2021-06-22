@@ -1,0 +1,21 @@
+.footer{
+    padding: 5em;
+    position: relative;
+    font-size: 0.8em;
+    width: 100%;
+    background-color: var(--main-bg-color);
+    margin: 0 auto;
+    margin-top: 10vh;
+    color:var(--secondary-text-color);
+    display: flex;
+    justify-content: space-evenly;
+    left: 0;
+    bottom: 0;
+    flex-wrap: wrap;
+  }
+  
+  .footerText{
+    margin:10px;
+    text-align: center;
+    float:left;
+  }

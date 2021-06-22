@@ -1,0 +1,76 @@
+.cardContainer{
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1em;
+  }
+  
+  
+  .container{
+    padding-top: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+  }
+  
+  .title{
+    background-color:var(--main-text-color);
+    color:var(--main-bg-color);
+    display:block;
+    text-transform: uppercase;
+    width:fit-content;
+    margin: auto;
+    padding: 1em;
+    border-radius: 10px;
+  }
+  
+  .switch{
+    display: flex;
+    align-items: center;
+    margin:10px;
+    font-weight: bold;
+    color:var(--secondary-text-color);
+  }
+  .switch input{
+    margin:10px;
+    width: 1.8em;
+    height: 1.8em;
+    transition: 0.3s;
+  
+  }
+  
+  .addWill{
+    border-radius: 50%;
+    position:fixed;
+    margin:15px;
+    bottom:0px;
+    right:0px;
+    width:4em;
+    height: 4em;
+    background-color:var(--main-text-color);
+    color:var(--main-bg-color);
+    transition: 0.5s;
+    font-size: 1.2em;
+    font-weight: bolder;
+    border:1px solid var(--main-bg-color);
+    z-index: 2;
+  }
+  
+  .addWill:hover{
+    font-size: 1.5em;
+  }
+  
+  
+  .invisible{
+    display:none;
+  }
+  
+  
+  .loading{
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+  
