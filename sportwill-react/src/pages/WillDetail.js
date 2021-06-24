@@ -1,102 +1,122 @@
 import React from 'react'
-import styles from "./WillCard.module.css"
+import { useParams } from 'react-router'
+import { useEffect, useState } from 'react';
+import styles from "./WillDetail.module.css"
+import { Route } from 'react-router-dom';
 
 export default function WillDetail(props) {
+    const ID = useParams().id;
+    const [will, setWill]=useState();
+    const [loading, setLoading]=useState(true);
+
+
+    useEffect(() => {
+        console.log(ID);
+                    
+        fetch(`http://synchost.ns0.it:8080/uscite/${ID}`)
+        .then(res=>{
+            return res.json()
+        })
+        .then(data=> {
+            console.log(data);
+            setWill(data);
+            setLoading(false);
+        });
+    },[ID]);
+
     return (
         <div>
-        <form >
-            <h1 id="loading">Loading Data...</h1>
-                <div class="container" >
-                <h1>{props.will.titolo}</h1>
-                <img src="imgSrc" id="activity" alt="activity"/>
+        <form id={styles.form}>
+            {loading ? <h1 id={styles.loading}>Loading Data...</h1>
+            :   <div className={styles.container} >
+                <h1 className={styles.title}>{will.titolo}</h1>
+                <img src={`../../assets/SportImages/Icons/${will.sport}.svg`} id={styles.activity} alt="activity"/>
 
-                    <div class="elementContainer">
+                    <div className={styles.elementContainer}>
 
-
-
-                    <div class="element">
-                        <div class="labelContainer">
-                        <img src="../../assets/Icons/user.svg"alt="User Icon"/>
-                        <label for="date">User</label>
-                        </div>
-                        <div class="info">{props.will.nomeproprietario}</div>
+                    <div className={styles.element}>
+                        <div className={styles.labelContainer}>
+                            <img src="../../assets/Icons/user.svg"alt="User Icon"/>
+                            <label className={styles.label} htmlFor="date">User</label>
+                            </div>
+                        <div className={styles.info}>{will.nomeproprietario}</div>
 
                     </div>
 
 
-                    <div class="element">
-                        <div class="labelContainer">
-                        <img src="../../assets/Icons/date.svg"alt="Date Icon"/>
-                        <label for="date">Date</label>
-                        </div>
-                        <div class="info">{props.will.data}</div>
+                    <div className={styles.element}>
+                        <div className={styles.labelContainer}>
+                            <img src="../../assets/Icons/date.svg"alt="Date Icon"/>
+                            <label className={styles.label} htmlFor="date">Date</label>
+                            </div>
+                        <div className={styles.info}>{will.data}</div>
 
                     </div>
 
-                    <div class="element">
-                        <div class="labelContainer">
-                        <img src="../../assets/Icons/time.svg"alt="Time Icon"/>
-                        <label for="time">Time</label>
-                        </div>
-                        <div class="info">{props.will.ora}</div>
+                    <div className={styles.element}>
+                        <div className={styles.labelContainer}>
+                            <img src="../../assets/Icons/time.svg"alt="Time Icon"/>
+                            <label className={styles.label} htmlFor="time">Time</label>
+                            </div>
+                        <div className={styles.info}>{will.ora}</div>
 
                     </div>
 
-                    <div class="element">
-                        <div class="labelContainer">
-                        <img src="../../assets/Icons/length.svg"alt="Length Icon"/>
-                        <label for="length">Length</label>
-                        </div>
+                    <div className={styles.element}>
+                        <div className={styles.labelContainer}>
+                            <img src="../../assets/Icons/length.svg"alt="Length Icon"/>
+                            <label className={styles.label} htmlFor="length">Length</label>
+                            </div>
 
-                        <div class="info">{props.will.lunghezza}</div>
+                        <div className={styles.info}>{will.lunghezza}</div>
                     </div>
 
-                    <div class="element">
-                        <div class="labelContainer">
-                        <img src="../../assets/Icons/place.svg"alt="Place Icon"/>
-                        <label for="place">Place</label>
-                        </div>
+                    <div className={styles.element}>
+                        <div className={styles.labelContainer}>
+                            <img src="../../assets/Icons/place.svg"alt="Place Icon"/>
+                            <label className={styles.label} htmlFor="place">Place</label>
+                            </div>
 
-                        <div class="info">{props.will.luogo}</div>
-
-                    </div>
-
-                    <div class="element">
-                        <div class="labelContainer">
-                        <img src="../../assets/Icons/stages.svg"alt="Stages Icon"/>
-                        <label for="stages">Stages</label>
-                        </div>
-
-                        <div class="info">{props.will.tappe}</div>
+                        <div className={styles.info}>{will.luogo}</div>
 
                     </div>
 
-                    <div class="element">
-                        <div class="labelContainer">
-                        <img src="../../assets/Icons/number.svg"alt="Number of Partecipants Icon"/>
-                        <label for="numb">Partecipants</label>
-                        </div>
+                    <div className={styles.element}>
+                        <div className={styles.labelContainer}>
+                            <img src="../../assets/Icons/stages.svg"alt="Stages Icon"/>
+                            <label className={styles.label} htmlFor="stages">Stages</label>
+                            </div>
 
-                        <div class="info">{props.will.numpart}</div>
-                    </div>
-
-                    <div class="element">
-                        <div class="labelContainer">
-                        <img src="../../assets/Icons/description.svg"alt="Description Icon"/>
-                        <label for="description">Description</label>
-                        </div>
-
-                        <div class="info">{props.will.descrizione}</div>
+                        <div className={styles.info}>{will.tappe}</div>
 
                     </div>
+
+                    <div className={styles.element}>
+                        <div className={styles.labelContainer}>
+                            <img src="../../assets/Icons/number.svg"alt="Number of Partecipants Icon"/>
+                            <label className={styles.label} htmlFor="numb">Partecipants</label>
+                            </div>
+
+                        <div className={styles.info}>{will.numpart}</div>
                     </div>
 
-                    <div class="buttons">
-                        <button type="button" class="goBack" routerLink="/homepage">Go Back</button>
-                        <button type="button"class="deletebtn">Delete</button>
-                        <button >Save Changes</button>
+                    <div className={styles.element}>
+                        <div className={styles.labelContainer}>
+                            <img src="../../assets/Icons/description.svg"alt="Description Icon"/>
+                            <label className={styles.label} htmlFor="description">Description</label>
+                            </div>
+
+                        <div className={styles.info}>{will.descrizione}</div>
+
+                    </div>
+                    </div>
+
+                    <div className={styles.buttons}>
+                        <Route render={({history}) => (
+                        <button type="button" className={ styles.button} onClick={() => { history.push('/Home') }}>Go Back</button>)} />
                     </div>
                 </div>
+                }
             </form>
         </div>
 

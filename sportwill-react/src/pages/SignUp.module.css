@@ -1,0 +1,93 @@
+
+#form{
+    width: 50%;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: var(--main-bg-color);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    transition: 0.3s;
+  }
+  #form:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  #title{
+    color:var(--main-text-color);
+    margin-bottom:10px;
+  }
+ .label{
+    margin:10px;
+    margin-bottom: 20px;
+  }
+    .input{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  .input:focus {
+    background-color: #f1f1f1;
+    outline: none;
+  }
+  #checkbox{
+    margin: 10px 0 20px 10px;
+  }
+  
+  
+  .button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.7;
+    transition: 0.3s;
+    float: left;
+    width: 40%;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin:5%;
+  }
+  
+  .button:disabled{
+    background-color: #aaa9a9;
+    color: rgb(238, 237, 237);
+  }
+  
+  .button:hover {
+    opacity:1;
+  }
+  
+  /* Extra styles for the cancel button */
+  .cancelbtn {
+    background-color: #f44336;
+  }
+  
+  
+  /* Add padding to container elements */
+  .container {
+    padding: 16px;
+  }
+  
+  #links{
+    margin-top: 10px;
+    display:flex;
+    justify-content: space-between;
+    padding: 5px;
+  }
+  
+  .alert{
+    color: var(--main-bg-color);
+    background-color: rgba(244, 67, 54,0.5);
+    border-radius: 5px;
+    padding:1em;
+    margin-bottom: 10px;
+  }
+  

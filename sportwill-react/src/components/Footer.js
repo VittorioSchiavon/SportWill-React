@@ -6,7 +6,7 @@ export default function Footer() {
         <footer className={styles.footer}>
             <p className={styles.footerText}>Author: Vittorio Schiavon</p>
             <p className={styles.footerText}>Copyright: Syncl Lab S.p.A</p>
-            <p className={styles.footerText}>Copyright 1999-2021 by Refsnes Data. All Rights Reserved.</p>
+            <p className={styles.footerText}>Copyright 1999-2021 by ScroorcS Data. All Rights Reserved.</p>
         </footer>
 
     )

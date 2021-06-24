@@ -1,6 +1,7 @@
 .footer{
     padding: 5em;
     position: relative;
+    bottom:0;
     font-size: 0.8em;
     width: 100%;
     background-color: var(--main-bg-color);
@@ -9,8 +10,6 @@
     color:var(--secondary-text-color);
     display: flex;
     justify-content: space-evenly;
-    left: 0;
-    bottom: 0;
     flex-wrap: wrap;
   }
   
