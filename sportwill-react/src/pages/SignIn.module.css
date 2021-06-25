@@ -12,6 +12,13 @@
   #form:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
+
+  @media screen and (max-width: 480px) {
+    
+    #form{
+      width: 100%;
+      }
+  }
   
   #title{
     color:var(--main-text-color);
@@ -69,7 +76,11 @@
   .cancelbtn {
     background-color: #f44336;
   }
-  
+  .buttons{
+    display:flex;
+    margin: auto;
+    justify-content: center;
+  }
   
   /* Add padding to container elements */
   .container {

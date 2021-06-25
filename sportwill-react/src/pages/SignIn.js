@@ -5,18 +5,18 @@ import { Link, Route } from "react-router-dom";
 import Message from "../components/Message";
 
 export default function SignIn() {
-  const [user, setUser] = useState({
+  const [user, setUser] = useState({  //memorizza i dati inseriti dall'utente
     email: "",
     password: "",
   });
-  const [message, setMessage]=useState("");
-  const [touched, setTouched]=useState({
+  const [message, setMessage]=useState(""); //memorizza il messaggio eventualmente da stampare a schermo
+  const [touched, setTouched]=useState({ //memorizza se ogni campo dato è stato modificato
     email: false,
     password: false,
   });
 
 
-  function handleChange(e) {
+  function handleChange(e) {  //funzione invocata ogni volta che viene modificato un campo dato, si aggiorna il valore e la flag Touched
     const { name, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
@@ -28,12 +28,11 @@ export default function SignIn() {
     }));
   }
 
-  function signIn() {
+  function signIn() {       //chiamata HTTP POST per effettuare il login con  i dati inseriti dall'utente
     fetch("http://synchost.ns0.it:8091/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        /*Authorization: `Bearer ${localStorage.getItem("token")}`,*/
       },
       body: JSON.stringify(user),
     })
@@ -41,12 +40,12 @@ export default function SignIn() {
       console.log(response);
       response.status !== 200
         ? setMessage("Error, try again.")
-        : setMessage("Operation Successfully Completed!");
+        : setMessage("You Are Now Logged In.");
       return response.json();
     })
       .then((data) => {
         console.log("Success:", data);
-        data.error===undefined && localStorage.setItem("userData", JSON.stringify(data));
+        data.error===undefined && localStorage.setItem("userData", JSON.stringify(data)); //se si ottiene una riposta positiva, si salvano i dati utente in locale
       })
       .catch((error) => {
         console.error("Error:", error);

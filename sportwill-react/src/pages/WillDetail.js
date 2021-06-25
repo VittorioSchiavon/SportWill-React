@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 import styles from "./WillDetail.module.css"
 import { Route } from 'react-router-dom';
 
-export default function WillDetail(props) {
-    const ID = useParams().id;
-    const [will, setWill]=useState();
-    const [loading, setLoading]=useState(true);
+export default function WillDetail() {
+    const ID = useParams().id; //memorizza l'id ottenuto dall'URL relativo ad una Will
+    const [will, setWill]=useState(); //memorizza i dati della will
+    const [loading, setLoading]=useState(true); //stato che memorizza se sono in fase di caricamento
 
 
-    useEffect(() => {
+    useEffect(() => { //invocata quando il componente viene creato: ottiene i dati della Will relativa all'ID con una chiamata HTTP GET al server
         console.log(ID);
                     
         fetch(`http://synchost.ns0.it:8080/uscite/${ID}`)

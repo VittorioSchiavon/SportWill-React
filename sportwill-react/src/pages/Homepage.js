@@ -3,20 +3,19 @@ import styles from "./Homepage.module.css";
 import { Route } from "react-router-dom";
 import WillCard from "../components/WillCard";
 import { useState, useEffect } from "react";
-//import { getData } from "../services/WillData";
 import * as Auth from "../services/Auth";
 
 export default function Homepage(props) {
-  const [willData, setWillData] = useState();
-  const [loading, setLoading] = useState(true);
-  const [checked, setChecked] = useState(false);
+  const [willData, setWillData] = useState(); // insieme di tutte le Will ottenute
+  const [loading, setLoading] = useState(true); 
+  const [checked, setChecked] = useState(false); //memorizza il valore della checkbox
 
-  function checkboxInputChange(e) {
+  function checkboxInputChange(e) { //cambia il valore della checkbox
     setChecked((prevChecked) => !prevChecked);
     console.log(checked);
   }
 
-  function displayContent() {
+  function displayContent() {  //funziuone di support che ritorna il JSX da visualizzare in base a se l'utente ha effettuato l'accesso e se si sono ottenuti i dati
     if (!loading && willData !== null && willData !== undefined) {
       return (
         <div className={styles.cardContainer}>
@@ -35,7 +34,7 @@ export default function Homepage(props) {
     }
   }
 
-  useEffect(() => {
+  useEffect(() => { //invocata quando il componente viene creato, ottiene i dati delle will daol server  
     fetch("http://synchost.ns0.it:8080/uscite/")
       .then((res) => {
         return res.json();
@@ -45,8 +44,6 @@ export default function Homepage(props) {
         setWillData(data);
       });
     setLoading(false);
-
-    console.log(Auth.isAuthenticated());
   }, []);
 
   return (
@@ -69,7 +66,7 @@ export default function Homepage(props) {
             <button
               className={styles.addWill}
               onClick={() => {
-                history.push("/Edit/new");
+                history.push("/Edit/new"); // quando l'elemento viene cliccato torna alla Home
               }}
             >
               +

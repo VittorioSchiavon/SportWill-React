@@ -3,6 +3,7 @@
     overflow: hidden;
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
     user-select: none;
+    width: 100%;
   }
   
   
@@ -32,6 +33,12 @@
     height: 3em;
     float: left;
     margin: 1em;
+    margin-left: 2em;
   
   }
   
+  @media screen and (max-width: 480px) {
+    .homeLink {
+        display: none;
+    }
+}

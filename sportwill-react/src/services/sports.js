@@ -1,3 +1,6 @@
+
+//Array che memrizza gli sport che possono essere inseriti dall'utente.
+
 export const sports=[
   "Soccer",
 "Basketball",
@@ -9,6 +12,7 @@ export const sports=[
 "Swimming",
 "Boxing",
 "Rugby",
+"Football",
 "Other"
 ];
 

@@ -8,13 +8,13 @@ import { sports } from "../services/sports";
 import Message from "../components/Message";
 
 export default function EditWill() {
-  const [loading, setLoading] = useState(true);
-  const [ID] = useState(useParams().id);
-  const [today] = useState(setDate());
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(true); //stato che memorizza se sono in fase di caricamento
+  const [ID] = useState(useParams().id); //stato che prende l'ID dall'URL: puo' essere "new" se bisogna creare una nuova Will o un numero, ovvero l'ID della Will da modificare
+  const [today] = useState(setDate()); //memorizzo la data odierna nel formato corretto
+  const [message, setMessage] = useState(""); // memorizzo il messaggio per il popUp
 
-  const [will, setWill] = useState({
-    proprietario: Auth.getUserEmail(),
+  const [will, setWill] = useState({ //stato che memorizza i campi dati della Will, creata o modificata
+    proprietario: Auth.getUserEmail(), 
     data: "",
     descrizione: "",
     lunghezza: "",
@@ -27,7 +27,7 @@ export default function EditWill() {
     nomeproprietario: Auth.getUserFullName(),
   });
 
-  const [touched, setTouched]=useState({
+  const [touched, setTouched]=useState({ //memorizzo se il campo input è stato alterato o meno, serve per il display degli alert
     data: false,
     descrizione: false,
     lunghezza: false,
@@ -39,7 +39,7 @@ export default function EditWill() {
     titolo: false,
   });
 
-  function handleChange(e) {
+  function handleChange(e) { // funzione invocata ogni volta che avviene un cambiamento in un campo di input: viene aggiornato il valore e messo a true la flag Touched
     const { name, value } = e.target;
     setWill((prevState) => ({
       ...prevState,
@@ -51,26 +51,25 @@ export default function EditWill() {
       }));
     }
 
-  function deleteWill() {
+  function deleteWill() { // Funzione invocata quando viene premuto il tasto delete: effettua una  chiamata HTTP DELETE al server indicando l'ID della will da eliminare
     if (ID !== "new")
+    
       fetch("http://synchost.ns0.it:8080/uscite/elimina/" + will.id, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${Auth.getToken()}`,
+          Authorization: `Bearer ${Auth.getToken()}`, //JSON token per l'autenticazione
         },
-        //body: JSON.stringify(will),
       })
       .then((response) => {
         console.log(response);
-        response.status !== 200
+        response.status !== 200              //crea un popUp Message con contenuto variabile in base alla risposta affermativa o meno dal server
           ? setMessage("Error, try again.")
-          : setMessage("Operation Successfully Completed!");
+          : setMessage("Will Removed Successfully.");
         return response.json();
       })
         .then((data) => {
           console.log("Success:", data);
-          //window.location.href = '/Home';
         })
         .catch((error) => {
           setMessage("Error, try again.");
@@ -78,7 +77,7 @@ export default function EditWill() {
         });
   }
   function submitChanges() {
-    fetch("http://synchost.ns0.it:8080/uscite/inserisci", {
+    fetch("http://synchost.ns0.it:8080/uscite/inserisci", { //Funzione simile a deleteWill(). Invia una richiesta HTTP POST passando la will. Essa verrà creata o modificata nel database 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,21 +89,18 @@ export default function EditWill() {
         console.log(response);
         response.status !== 200
           ? setMessage("Error, try again.")
-          : setMessage("Operation Successfully Completed!");
+          : setMessage("Will Saved Successfully.");
         return response.json();
       })
       .then((data) => {
         console.log("Success:", data);
-        //setMessage(data.toString());
-        //window.location.href = '/Home';
-        //data.codice!=="200" ? setMessage("Error, try again.") : setMessage("Operation Successfully Completed!");
       })
       .catch((error) => {
         setMessage("Error, try again.");
         console.error("Error:", error);
       });
   }
-  function setDate() {
+  function setDate() {  //Imposta la data di oggi formattata nel modo consono
     var todayDate = new Date();
     var todayTemp = "";
     todayTemp = todayDate.getFullYear() + "-";
@@ -120,15 +116,16 @@ export default function EditWill() {
     return todayTemp;
   }
 
-  useEffect(() => {
+  useEffect(() => {  //Invocata ogni volta che il componente viene creato. Ottiene dal server la Will da modificare. se l?ID è "new" vuol dire che bisgona crearne una da zero
     if (ID !== "new") {
+      console.log(ID)
       fetch(`http://synchost.ns0.it:8080/uscite/${ID}`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          setWill(data);
-          setLoading(false);
+          setWill(data);        //imposto lo stato Will con i dati appena ottenuti
+          setLoading(false);    //imposto lo stato loading a false per indicare che ho ottenuto i dati
         })
         .catch((error) => {
           setMessage("Error, try again.");
@@ -335,7 +332,7 @@ export default function EditWill() {
                   type="text"
                   name="descrizione"
                   value={will.descrizione}
-                  cols="30" rows="5"
+                  cols="20" rows="5"
                   onChange={(e) => handleChange(e)}
                   className={styles.input}
                 />

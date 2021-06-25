@@ -13,7 +13,7 @@
   }
   
 #willCard:hover {
-    box-shadow: 0 8px 16px 0 rgba(89, 166, 238,0.5);
+    box-shadow: 0 8px 16px 0 rgba(255, 156, 0, 0.4);
     transform: translateY(-5px);
   }
 #willCard p{
@@ -28,8 +28,7 @@
 #image{
     width:10em;
     height: 10em;
-  
-  
+
   }
   
 .text{
